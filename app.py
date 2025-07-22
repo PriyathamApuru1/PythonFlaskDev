@@ -14,11 +14,18 @@ transactions = [
 # Read operation
 @app.route("/")
 def get_transactions():
-    return render_template("transactions.html", transactions=transa)
+    return render_template("transactions.html", transactions=transactions)
 
 # Create operation
-@app.route()
-
+@app.route("/add", methods = ['GET','POST'])
+def add_transaction():
+    if request.method == 'POST':
+        transaction = {
+              'id': len(transactions)+1
+              'date': request.form['date']
+              'amount': float(request.form['amount'])
+             }
+             
 # Update operation
 
 # Delete operation
